@@ -1,0 +1,15 @@
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\JaveragesLibrary.exe
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\appsettings.Development.json
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\appsettings.json
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Infrastructure\Data\javerages.library.data.json
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\JaveragesLibrary.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\JaveragesLibrary.deps.json
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\JaveragesLibrary.runtimeconfig.json
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\JaveragesLibrary.pdb
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\AutoMapper.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Microsoft.AspNetCore.OpenApi.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Microsoft.OpenApi.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\codigos Sistemas operativos\home\JaveragesLibrary\publish\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -1,0 +1,103 @@
+[
+    {
+        "Id": 1,
+        "Tipo": "Acciones",
+        "Monto": 10000,
+        "FechaInicio": "2022-01-15T00:00:00",
+        "FechaFin": "2022-12-31T00:00:00",
+        "RendimientoEsperado": 0.08,
+        "RendimientoActual": 0.1,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 2,
+        "Tipo": "Bonos",
+        "Monto": 5000,
+        "FechaInicio": "2021-11-20T00:00:00",
+        "FechaFin": "2022-11-20T00:00:00",
+        "RendimientoEsperado": 0.05,
+        "RendimientoActual": 0.06,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 3,
+        "Tipo": "Fondos de Inversi\u00F3n",
+        "Monto": 15000,
+        "FechaInicio": "2022-03-10T00:00:00",
+        "FechaFin": "2023-03-10T00:00:00",
+        "RendimientoEsperado": 0.07,
+        "RendimientoActual": 0.09,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 4,
+        "Tipo": "Acciones",
+        "Monto": 7500,
+        "FechaInicio": "2022-02-05T00:00:00",
+        "FechaFin": "2022-12-31T00:00:00",
+        "RendimientoEsperado": 0.09,
+        "RendimientoActual": 0.12,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 5,
+        "Tipo": "Bonos",
+        "Monto": 3000,
+        "FechaInicio": "2022-04-18T00:00:00",
+        "FechaFin": "2022-10-18T00:00:00",
+        "RendimientoEsperado": 0.06,
+        "RendimientoActual": 0.07,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 6,
+        "Tipo": "Fondos de Inversi\u00F3n",
+        "Monto": 12000,
+        "FechaInicio": "2022-05-22T00:00:00",
+        "FechaFin": "2023-05-22T00:00:00",
+        "RendimientoEsperado": 0.08,
+        "RendimientoActual": 0.1,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 7,
+        "Tipo": "Acciones",
+        "Monto": 9000,
+        "FechaInicio": "2022-06-30T00:00:00",
+        "FechaFin": "2022-12-31T00:00:00",
+        "RendimientoEsperado": 0.07,
+        "RendimientoActual": 0.11,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 8,
+        "Tipo": "Bonos",
+        "Monto": 6000,
+        "FechaInicio": "2022-07-15T00:00:00",
+        "FechaFin": "2023-07-15T00:00:00",
+        "RendimientoEsperado": 0.05,
+        "RendimientoActual": 0.06,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 9,
+        "Tipo": "Fondos de Inversi\u00F3n",
+        "Monto": 18000,
+        "FechaInicio": "2022-08-10T00:00:00",
+        "FechaFin": "2023-08-10T00:00:00",
+        "RendimientoEsperado": 0.08,
+        "RendimientoActual": 0.09,
+        "Estado": "Activa"
+    },
+    {
+        "Id": 10,
+        "Tipo": "Acciones",
+        "Monto": 8500,
+        "FechaInicio": "2022-09-25T00:00:00",
+        "FechaFin": "2022-12-31T00:00:00",
+        "RendimientoEsperado": 0.1,
+        "RendimientoActual": 0.14,
+        "Estado": "Activa"
+    }
+]
+
