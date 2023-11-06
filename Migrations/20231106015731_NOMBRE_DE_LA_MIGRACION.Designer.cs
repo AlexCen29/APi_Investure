@@ -4,6 +4,7 @@ using JaveragesLibrary.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Investure.Migrations
 {
     [DbContext(typeof(JaveragesLibraryDbContext))]
-    partial class JaveragesLibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231106015731_NOMBRE_DE_LA_MIGRACION")]
+    partial class NOMBRE_DE_LA_MIGRACION
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

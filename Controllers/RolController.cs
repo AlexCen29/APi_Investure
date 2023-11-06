@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using InvestureLibrary.Domain.Dtos;
 using JaveragesLibrary.Domain.Dtos;
 using JaveragesLibrary.Domain.Dtos.QueryFilters;
 using JaveragesLibrary.Domain.Entities;
