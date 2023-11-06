@@ -37,6 +37,9 @@ public partial class JaveragesLibraryDbContext : DbContext
 
     public virtual DbSet<RegistroDeContacto> RegistroDeContacto { get; set; }
 
+   public virtual DbSet<SeguimientoDeTarea> SeguimientoDeTareas { get; set; }
+    
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

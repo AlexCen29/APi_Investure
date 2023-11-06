@@ -15,6 +15,7 @@ namespace JaveragesLibrary.Services.Mappings
         CreateMap<EventoCreateDTO, Evento>();
         CreateMap<ClienteCreateDTO, Cliente>();
         CreateMap<RegistroDeContactoCreateDTO, RegistroDeContacto>();
+        CreateMap<SeguimientoDeTareaCreateDTO, SeguimientoDeTarea>();
         
         
     }

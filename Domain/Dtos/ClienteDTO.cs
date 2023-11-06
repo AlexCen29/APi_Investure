@@ -10,6 +10,6 @@ namespace JaveragesLibrary.Domain.Dtos
         public DateTime FechaNac { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int Telefono { get; set; }
-        // Agrega más propiedades si es necesario para otros campos específicos de clientes
+        
     }
 }

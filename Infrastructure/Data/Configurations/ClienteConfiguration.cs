@@ -16,7 +16,6 @@ namespace JaveragesLibrary.Infrastructure.Data.Configurations
             builder.Property(e => e.Telefono).IsRequired(); // Configura la propiedad Telefono
             builder.Property(e => e.IdEmpleado_fk).IsRequired(); // Configura la propiedad IdEmpleado_fk
 
-            // Configura la relación con la entidad Empleado
             builder.HasOne(e => e.Empleado)
                 .WithMany()
                 .HasForeignKey(e => e.IdEmpleado_fk)
