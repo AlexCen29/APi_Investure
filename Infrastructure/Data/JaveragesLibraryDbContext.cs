@@ -26,9 +26,6 @@ public partial class JaveragesLibraryDbContext : DbContext
     public virtual DbSet<AsignarPermiso> AsignarPermisos { get; set; }
     public virtual DbSet<AsignarPermiso> asignarPermiso { get; set; }
 
-
-
-
     public virtual DbSet<Empleado> Empleados { get; set; }
     public virtual DbSet<Empleado> empleado { get; set; }
 
@@ -38,19 +35,27 @@ public partial class JaveragesLibraryDbContext : DbContext
     public virtual DbSet<Cliente> Clientes { get; set; }
     public virtual DbSet<Cliente> cliente { get; set; }
 
+    public virtual DbSet<RegistroDeContacto> RegistroDeContacto { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<RegistroDeContacto>()
+                .HasOne(e => e.Empleado)
+                .WithMany()
+                .HasForeignKey(e => e.IdEmpleado_fk)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<RegistroDeContacto>()
+                .HasOne(e => e.Cliente)
+                .WithMany()
+                .HasForeignKey(e => e.IdCliente_fk)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            OnModelCreatingPartial(modelBuilder);
+        }
 
-
-
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-
-
-        OnModelCreatingPartial(modelBuilder);
-    }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

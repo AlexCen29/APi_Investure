@@ -194,6 +194,58 @@ namespace Investure.Migrations
                     b.ToTable("Permiso");
                 });
 
+            modelBuilder.Entity("JaveragesLibrary.Domain.Entities.RegistroDeContacto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Canal")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("FechaContacto")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCliente_fk")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdEmpleado_fk")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoContacto")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdCliente_fk");
+
+                    b.HasIndex("IdEmpleado_fk");
+
+                    b.ToTable("RegistroDeContacto");
+                });
+
             modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Rol", b =>
                 {
                     b.Property<int>("Id")
@@ -259,6 +311,25 @@ namespace Investure.Migrations
                     b.HasOne("JaveragesLibrary.Domain.Entities.Empleado", "Empleado")
                         .WithMany()
                         .HasForeignKey("EmpleadoId");
+
+                    b.Navigation("Empleado");
+                });
+
+            modelBuilder.Entity("JaveragesLibrary.Domain.Entities.RegistroDeContacto", b =>
+                {
+                    b.HasOne("JaveragesLibrary.Domain.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("IdCliente_fk")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("JaveragesLibrary.Domain.Entities.Empleado", "Empleado")
+                        .WithMany()
+                        .HasForeignKey("IdEmpleado_fk")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
 
                     b.Navigation("Empleado");
                 });

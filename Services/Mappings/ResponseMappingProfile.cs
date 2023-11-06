@@ -14,6 +14,7 @@ namespace JaveragesLibrary.Services.Mappings
             CreateMap<Empleado, EmpleadoDTO>();
             CreateMap<Evento, EventoDTO>();
             CreateMap<Cliente, ClienteDTO>();
+            CreateMap<RegistroDeContacto, RegistroDeContactoDTO>();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace InvestureLibrary.Services.Mappings
             CreateMap<EmpleadoUpdateDTO, Empleado>();
             CreateMap<EventoUpdateDTO, Evento>();
             CreateMap<ClienteUpdateDTO, Cliente>();
+            CreateMap<RegistroDeContactoUpdateDTO, RegistroDeContacto>();
         }
     }
 }

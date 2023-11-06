@@ -141,6 +141,39 @@ namespace Investure.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RegistroDeContacto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdEmpleado_fk = table.Column<int>(type: "int", nullable: false),
+                    IdCliente_fk = table.Column<int>(type: "int", nullable: false),
+                    TipoContacto = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    FechaContacto = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Estado = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Canal = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    FechaHoraInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaHoraFin = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegistroDeContacto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RegistroDeContacto_Cliente_IdCliente_fk",
+                        column: x => x.IdCliente_fk,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_RegistroDeContacto_Empleado_IdEmpleado_fk",
+                        column: x => x.IdEmpleado_fk,
+                        principalTable: "Empleado",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AsignarPermiso_Id_permiso",
                 table: "AsignarPermiso",
@@ -165,6 +198,16 @@ namespace Investure.Migrations
                 name: "IX_Evento_EmpleadoId",
                 table: "Evento",
                 column: "EmpleadoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegistroDeContacto_IdCliente_fk",
+                table: "RegistroDeContacto",
+                column: "IdCliente_fk");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegistroDeContacto_IdEmpleado_fk",
+                table: "RegistroDeContacto",
+                column: "IdEmpleado_fk");
         }
 
         /// <inheritdoc />
@@ -174,13 +217,16 @@ namespace Investure.Migrations
                 name: "AsignarPermiso");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
-
-            migrationBuilder.DropTable(
                 name: "Evento");
 
             migrationBuilder.DropTable(
+                name: "RegistroDeContacto");
+
+            migrationBuilder.DropTable(
                 name: "Permiso");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
 
             migrationBuilder.DropTable(
                 name: "Empleado");

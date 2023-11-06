@@ -11,6 +11,7 @@ using JaveragesLibrary.Services.Features.Roles;
 using JaveragesLibrary.Services.Features.AsignarPermisos;
 using JaveragesLibrary.Services.Features.Eventos;
 using JaveragesLibrary.Services.Features.Clientes;
+using JaveragesLibrary.Services.Features.RegistroDeContactos;
 
 // using JaveragesLibrary.Services.Features.Notas;
 
@@ -30,6 +31,7 @@ builder.Services.AddScoped<AsignarPermisoRepository>();
 builder.Services.AddScoped<EmpleadoRepository>();
 builder.Services.AddScoped<EventoRepository>();
 builder.Services.AddScoped<ClienteRepository>();
+builder.Services.AddScoped<RegistroDeContactoRepository>();
 
 
 
@@ -43,6 +45,7 @@ builder.Services.AddScoped<AsignarPermisoService>();
 builder.Services.AddScoped<EmpleadoService>();
 builder.Services.AddScoped<EventoService>();
 builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<RegistroDeContactoService>();
 
 
 
