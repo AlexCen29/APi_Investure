@@ -1,65 +1,84 @@
-
-    using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using JaveragesLibrary.Domain.Dtos.QueryFilters;
 using JaveragesLibrary.Infrastructure.Data;
-using InvestureLibrary.Domain.Entities;
-using InvestureLibrary.Domain.Dtos;
+using JaveragesLibrary.Domain.Entities;
 
 namespace JaveragesLibrary.Infrastructure.Repositories
 {
     public class ClienteRepository
     {
-        private readonly JaveragesLibraryDbContext _dbContext;
+        private readonly JaveragesLibraryDbContext _context;
 
-        public ClienteRepository(JaveragesLibraryDbContext dbContext)
+        public ClienteRepository(JaveragesLibraryDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
-        public async Task<List<Cliente>> GetAllClientesAsync()
+        public async Task<IEnumerable<Cliente>> GetAll(ClienteQueryFilter clienteQueryFilter)
         {
-            return await _dbContext.Clientes.ToListAsync();
+            var query = _context.Clientes.AsQueryable();
+
+            if (clienteQueryFilter.Id > 0)
+                query = query.Where(cliente => cliente.Id == clienteQueryFilter.Id);
+
+            // Agrega más condiciones si es necesario para otros campos
+
+            var clientes = await query.ToListAsync();
+            return clientes;
         }
 
-        public async Task<Cliente> GetClienteByIdAsync(int id)
+        public async Task<Cliente> GetById(int id)
         {
-            return await _dbContext.Clientes.FindAsync(id);
+            return await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Id == id)
+                ?? new Cliente
+                {
+                    // Puedes inicializar las propiedades por defecto aquí
+                };
         }
 
-        public async Task Add(Cliente nota)
+        public async Task Add(Cliente cliente)
         {
-            await _dbContext.Clientes.AddAsync(nota);
-            await _dbContext.SaveChangesAsync();
+            await _context.Clientes.AddAsync(cliente);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateClienteAsync(int id, ClienteUpdateDTO cliente)
+        public async Task Update(Cliente updatedCliente)
         {
-            var existingCliente = await _dbContext.Clientes.FindAsync(id);
-
-            if (existingCliente != null)
+            try
             {
-                existingCliente.Nombre = cliente.Nombre;
-                existingCliente.Email = cliente.Email;
-                existingCliente.Telefono = cliente.Telefono;
-                existingCliente.Empleado_id = cliente.Empleado_id;
+                var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == updatedCliente.Id);
 
-                await _dbContext.SaveChangesAsync();
+                if (cliente != null)
+                {
+                    cliente.IdEmpleado_fk = updatedCliente.IdEmpleado_fk;
+                    cliente.Nombre = updatedCliente.Nombre;
+                    cliente.CorreoElectronico = updatedCliente.CorreoElectronico;
+                    cliente.FechaNac = updatedCliente.FechaNac;
+                    cliente.FechaCreacion = updatedCliente.FechaCreacion;
+                    cliente.Telefono = updatedCliente.Telefono;
+
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja la excepción según tus necesidades
             }
         }
 
-        public async Task DeleteClienteAsync(int id)
+        public async Task Delete(int id)
         {
-            var cliente = await _dbContext.Clientes.FindAsync(id);
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Id == id);
 
             if (cliente != null)
             {
-                _dbContext.Clientes.Remove(cliente);
-                await _dbContext.SaveChangesAsync();
+                _context.Clientes.Remove(cliente);
+                await _context.SaveChangesAsync();
             }
         }
     }
 }
-

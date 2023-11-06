@@ -20,11 +20,11 @@ namespace InvestureLibrary.Services.Mappings
             CreateMap<AsignarPermisoUpdateDTO, AsignarPermiso>();
             CreateMap<EmpleadoUpdateDTO, Empleado>();
             CreateMap<EventoUpdateDTO, Evento>();
+            CreateMap<ClienteUpdateDTO, Cliente>();
 
 
 
             CreateMap<InversionUpdateDTO, Inversion>();
-            CreateMap<ClienteDTO, Cliente>();
             CreateMap<EmpresaUpdateDTO, Empresa>();
             CreateMap<Propiedad, PropiedadDTO>().ReverseMap()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

@@ -44,6 +44,9 @@ public partial class JaveragesLibraryDbContext : DbContext
     public virtual DbSet<Evento> Eventos { get; set; }
     public virtual DbSet<Evento> evento { get; set; }
 
+    public virtual DbSet<Cliente> Clientes { get; set; }
+    public virtual DbSet<Cliente> cliente { get; set; }
+
 
 
     public virtual DbSet<Casa> Casas { get; set; }
@@ -54,8 +57,6 @@ public partial class JaveragesLibraryDbContext : DbContext
     public virtual DbSet<Propiedad> Propiedades { get; set; }
     public virtual DbSet<Terreno> Terrenos { get; set; }
     public virtual DbSet<Villa> Villas { get; set; }
-    public virtual DbSet<Cliente> Clientes { get; set; }
-
 
 
 
@@ -67,10 +68,10 @@ public partial class JaveragesLibraryDbContext : DbContext
             modelBuilder.Entity<Empresa>()
         .ToTable("Empresas");
 
-        modelBuilder.Entity<Empleado>()
-        .ToTable("Empleados");
-        modelBuilder.Entity<Cliente>()
-                .ToTable("Clientes");
+        // modelBuilder.Entity<Empleado>()
+        // .ToTable("Empleados");
+        // modelBuilder.Entity<Cliente>()
+        //         .ToTable("Clientes");
 
         modelBuilder.Entity<Propiedad>()
             .HasDiscriminator<string>("Tipo")

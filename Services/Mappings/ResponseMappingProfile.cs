@@ -15,6 +15,7 @@ namespace JaveragesLibrary.Services.Mappings
             CreateMap<AsignarPermiso, AsignarPermisoDTO>();
             CreateMap<Empleado, EmpleadoDTO>();
             CreateMap<Evento, EventoDTO>();
+            CreateMap<Cliente, ClienteDTO>();
 
             CreateMap<Inversion, InversionDTO>();
             CreateMap<Empresa, EmpresaDTO>();
@@ -30,7 +31,7 @@ namespace JaveragesLibrary.Services.Mappings
             CreateMap<Terreno, TerrenoDTO>().ReverseMap();
             CreateMap<Villa, VillaDTO>().ReverseMap();
             CreateMap<Nota, NotaDTO>();
-            CreateMap<ClienteDTO, Cliente>();
+            
 
         }
     }

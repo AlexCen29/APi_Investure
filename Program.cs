@@ -10,7 +10,6 @@ using JaveragesLibrary.Services.Features.Empleados;
 using JaveragesLibrary.Services.Mappings;
 using JaveragesLibrary.Services.Features.Propiedades;
 using JaveragesLibrary.Services.Features.Notas;
-using InvestureLibrary.Services.Features.Clientes;
 using InvestureLibrary.Domain.Dtos;
 using InvestureLibrary.Infrastructure.Repositories;
 using JaveragesLibrary.Services.Features.Permisos;
@@ -18,6 +17,7 @@ using JaveragesLibrary.Domain.Entities;
 using JaveragesLibrary.Services.Features.Roles;
 using JaveragesLibrary.Services.Features.AsignarPermisos;
 using JaveragesLibrary.Services.Features.Eventos;
+using JaveragesLibrary.Services.Features.Clientes;
 
 // using JaveragesLibrary.Services.Features.Notas;
 
@@ -36,13 +36,14 @@ builder.Services.AddScoped<RolRepository>();
 builder.Services.AddScoped<AsignarPermisoRepository>();
 builder.Services.AddScoped<EmpleadoRepository>();
 builder.Services.AddScoped<EventoRepository>();
+builder.Services.AddScoped<ClienteRepository>();
+
 
 
 builder.Services.AddScoped<InversionRepository>();
 builder.Services.AddScoped<EmpresaRepository>();
 builder.Services.AddScoped<IPropiedadRepository, PropiedadRepository>();//agregar esta línea
 builder.Services.AddScoped<NotaRepository>();
-builder.Services.AddScoped<ClienteRepository>();
 
 
 // y Servicios
@@ -51,12 +52,13 @@ builder.Services.AddScoped<RolService>();
 builder.Services.AddScoped<AsignarPermisoService>();
 builder.Services.AddScoped<EmpleadoService>();
 builder.Services.AddScoped<EventoService>();
+builder.Services.AddScoped<ClienteService>();
 
 
 builder.Services.AddScoped<InversionService>();
 builder.Services.AddScoped<EmpresaService>();
 builder.Services.AddScoped<NotaService>();
-builder.Services.AddScoped<ClienteService>();
+
 
 
 // Registrar IPropiedadService y PropiedadService

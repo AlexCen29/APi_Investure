@@ -1,19 +1,30 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InvestureLibrary.Domain.Entities
+namespace JaveragesLibrary.Domain.Entities
 {
     public class Cliente
-{
-    public int Id { get; set; }
-    public string Nombre { get; set; }
-    public string Email { get; set; }
-    public string Telefono { get; set; }
-    public int? Empleado_id { get; set; }
+    {
+        public int Id { get; set; }
 
-    // Relación con el empleado si es necesario
+        [Required]
+        [ForeignKey("Empleado")]
+        public int IdEmpleado_fk { get; set; }
 
-}
+        [Required]
+        [StringLength(100)]
+        public string Nombre { get; set; }
+
+        [StringLength(100)]
+        public string CorreoElectronico { get; set; }
+
+        public DateTime FechaNac { get; set; }
+
+        public DateTime FechaCreacion { get; set; }
+
+        public int Telefono { get; set; }
+
+        public Empleado Empleado { get; set; }
+    }
 }

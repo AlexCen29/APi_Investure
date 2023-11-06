@@ -36,22 +36,16 @@ namespace Investure.Migrations
                     b.Property<int>("Id_rol")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PermisoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RolId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PermisoId");
+                    b.HasIndex("Id_permiso");
 
-                    b.HasIndex("RolId");
+                    b.HasIndex("Id_rol");
 
                     b.ToTable("AsignarPermiso");
                 });
 
-            modelBuilder.Entity("InvestureLibrary.Domain.Entities.Cliente", b =>
+            modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,21 +53,32 @@ namespace Investure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("CorreoElectronico")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("Empleado_id")
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaNac")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdEmpleado_fk")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.HasIndex("IdEmpleado_fk");
+
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Empleado", b =>
@@ -130,7 +135,7 @@ namespace Investure.Migrations
 
                     b.HasIndex("Rol_fk");
 
-                    b.ToTable("Empleados", (string)null);
+                    b.ToTable("Empleado");
                 });
 
             modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Empresa", b =>
@@ -504,15 +509,30 @@ namespace Investure.Migrations
                 {
                     b.HasOne("JaveragesLibrary.Domain.Entities.Permiso", "Permiso")
                         .WithMany()
-                        .HasForeignKey("PermisoId");
+                        .HasForeignKey("Id_permiso")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JaveragesLibrary.Domain.Entities.Rol", "Rol")
                         .WithMany()
-                        .HasForeignKey("RolId");
+                        .HasForeignKey("Id_rol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Permiso");
 
                     b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Cliente", b =>
+                {
+                    b.HasOne("JaveragesLibrary.Domain.Entities.Empleado", "Empleado")
+                        .WithMany()
+                        .HasForeignKey("IdEmpleado_fk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empleado");
                 });
 
             modelBuilder.Entity("JaveragesLibrary.Domain.Entities.Empleado", b =>

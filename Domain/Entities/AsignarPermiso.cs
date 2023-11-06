@@ -11,12 +11,12 @@ public class AsignarPermiso
 {
     public int Id { get; set; }
 
-    [Required] // Esta propiedad no puede ser nula
-    [ForeignKey("Id_rol")]
+    [Required] 
+    [ForeignKey("Rol")]
     public int Id_rol { get; set; }
 
-    [Required] // Esta propiedad no puede ser nula
-    [ForeignKey("Id_permiso")]
+    [Required] 
+    [ForeignKey("Permiso")]
     public int Id_permiso { get; set; }
 
     public Rol Rol { get; set; }

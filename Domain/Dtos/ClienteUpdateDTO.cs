@@ -3,14 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InvestureLibrary.Domain.Dtos
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace JaveragesLibrary.Domain.Dtos
 {
     public class ClienteUpdateDTO
-{
-    public string Nombre { get; set; }
-    public string Email { get; set; }
-    public string Telefono { get; set; }
-    public int? Empleado_id { get; set; }
-}
+    {
+        public int Id { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string Nombre { get; set; }
+
+        [StringLength(100)]
+        public string CorreoElectronico { get; set; }
+
+        [Required]
+        public DateTime FechaNac { get; set; }
+
+        [Required]
+        public DateTime FechaCreacion { get; set; }
+
+        [Required]
+        public int Telefono { get; set; }
+
+        [Required]
+        public int IdEmpleado_fk { get; set; } 
+
+    }
 }

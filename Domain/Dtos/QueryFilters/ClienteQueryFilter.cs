@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
-namespace JaveragesLibrary.Domain.Dtos
+namespace JaveragesLibrary.Domain.Dtos.QueryFilters
 {
-    public class ClienteDTO
+    public class ClienteQueryFilter
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -10,6 +11,5 @@ namespace JaveragesLibrary.Domain.Dtos
         public DateTime FechaNac { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int Telefono { get; set; }
-        // Agrega más propiedades si es necesario para otros campos específicos de clientes
     }
 }

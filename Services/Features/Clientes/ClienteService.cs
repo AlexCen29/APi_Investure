@@ -1,46 +1,43 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using InvestureLibrary.Domain.Dtos;
-using InvestureLibrary.Domain.Entities;
-using JaveragesLibrary.Infrastructure.Repositories;
+using AutoMapper;
 using JaveragesLibrary.Domain.Dtos;
 using JaveragesLibrary.Domain.Dtos.QueryFilters;
 using JaveragesLibrary.Domain.Entities;
 using JaveragesLibrary.Infrastructure.Data;
-using AutoMapper;
+using JaveragesLibrary.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace InvestureLibrary.Services.Features.Clientes
+namespace JaveragesLibrary.Services.Features.Clientes
 {
     public class ClienteService
     {
         private readonly ClienteRepository _clienteRepository;
-        private readonly JaveragesLibraryDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly JaveragesLibraryDbContext _dbContext;
 
-
-        public ClienteService(ClienteRepository clienteRepository, JaveragesLibraryDbContext dbContext, IMapper mapper)
+        public ClienteService(JaveragesLibraryDbContext dbContext, ClienteRepository clienteRepository, IMapper mapper)
         {
-            _clienteRepository = clienteRepository;
             _dbContext = dbContext;
+            _clienteRepository = clienteRepository;
             _mapper = mapper;
         }
 
-
-        public async Task<List<Cliente>> GetAllClientesAsync()
+        public async Task<IEnumerable<Cliente>> GetAll(ClienteQueryFilter clienteQueryFilter)
         {
-            return await _clienteRepository.GetAllClientesAsync();
+            return await _clienteRepository.GetAll(clienteQueryFilter);
         }
 
-        public async Task<Cliente> GetClienteByIdAsync(int id)
+        public async Task<ClienteDTO> GetById(int id)
         {
-            return await _clienteRepository.GetClienteByIdAsync(id);
+            var cliente = await _clienteRepository.GetById(id);
+            return _mapper.Map<ClienteDTO>(cliente);
         }
+
         public int GetNextId()
         {
-            int nextId = (_dbContext.Clientes.Max(e => (int?)e.Id) ?? 0) + 1;
+            int nextId = (_dbContext.Clientes.Max(c => (int?)c.Id) ?? 0) + 1;
             return nextId;
         }
 
@@ -51,15 +48,28 @@ namespace InvestureLibrary.Services.Features.Clientes
             await _dbContext.SaveChangesAsync();
         }
 
-
-        public async Task UpdateClienteAsync(int id, ClienteUpdateDTO cliente)
+        public async Task Update(ClienteUpdateDTO clienteUpdate)
         {
-            await _clienteRepository.UpdateClienteAsync(id, cliente);
+            var existingCliente = await _clienteRepository.GetById(clienteUpdate.Id);
+
+            if (existingCliente == null)
+            {
+                throw new InvalidOperationException("El cliente no se encontró.");
+            }
+
+            existingCliente.IdEmpleado_fk = clienteUpdate.IdEmpleado_fk;
+            existingCliente.Nombre = clienteUpdate.Nombre;
+            existingCliente.CorreoElectronico = clienteUpdate.CorreoElectronico;
+            existingCliente.FechaNac = clienteUpdate.FechaNac;
+            existingCliente.FechaCreacion = clienteUpdate.FechaCreacion;
+            existingCliente.Telefono = clienteUpdate.Telefono;
+
+            await _clienteRepository.Update(existingCliente);
         }
 
-        public async Task DeleteClienteAsync(int id)
+        public async Task Delete(int id)
         {
-            await _clienteRepository.DeleteClienteAsync(id);
+            await _clienteRepository.Delete(id);
         }
     }
 }

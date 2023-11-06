@@ -8,20 +8,20 @@ namespace JaveragesLibrary.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AsignarPermiso> builder)
         {
-            builder.HasKey(e => e.Id); // Configura la clave principal
-            builder.Property(e => e.Id_rol).IsRequired(); // Configura la propiedad Id_Rol como requerida
-            builder.Property(e => e.Id_permiso).IsRequired(); // Configura la propiedad Id_Permiso como requerida
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id_rol).IsRequired(); 
+            builder.Property(e => e.Id_permiso).IsRequired(); 
 
-            // Configura las relaciones con las entidades relacionadas (Rol y Permiso)
+            
             builder.HasOne(e => e.Rol)
                 .WithMany()
                 .HasForeignKey(e => e.Id_rol)
-                .OnDelete(DeleteBehavior.Restrict); // Puedes ajustar la acción de eliminación según tus necesidades
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(e => e.Permiso)
                 .WithMany()
                 .HasForeignKey(e => e.Id_permiso)
-                .OnDelete(DeleteBehavior.Restrict); // Puedes ajustar la acción de eliminación según tus necesidades
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
